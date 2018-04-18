@@ -17,7 +17,7 @@ class ListItem extends React.Component{
 		this.onChangeTel= this.onChangeTel.bind(this)
 		this.onChangeEmail = this.onChangeEmail.bind(this)
 		this.onChangeRate = this.onChangeRate.bind(this)
-
+		this.addDoc = this.addDoc.bind(this)
 
 	}
 	onChangeName(e){
