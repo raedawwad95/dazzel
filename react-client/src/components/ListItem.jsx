@@ -60,12 +60,18 @@ class ListItem extends React.Component{
 
 		return (
 			<div>
-			Name : <input value={this.props.name} onChange></input>
-			Specialization : <input value={this.props.specialization} onChange></input>
-			Address : <input value={this.props.address} onChange></input>
-			Tel : <input value={this.props.tel} onChange></input>
-			Email : <input value={this.props.email} onChange></input>
-			Rate :<input value={this.props.rate} onChange></input>
+			Name : <input value={this.props.name} onChange={this.onChangeName}></input>
+			<br/><br/>
+			Specialization : <input value={this.props.specialization} onChange={this.onChangeSpe}></input>
+			<br/><br/>
+			Address : <input value={this.props.address} onChange={this.onChangeAddress}></input>
+			<br/><br/>
+			Tel : <input value={this.props.tel} onChange={this.onChangeTel}></input>
+			<br/><br/>
+			Email : <input value={this.props.email} onChange={this.onChangeEmail}></input>
+			<br/><br/>
+			Rate :<input value={this.props.rate} onChange={this.onChangeRate}></input>
+			<br/><br/>
 			<button onClick={this.addDoc}> Add Doctor </button>
 			</div>
 
