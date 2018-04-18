@@ -18,11 +18,12 @@ app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
 
 app.get('/doctors', function (req, res) {
-  doctors.selectAll(function(err, data) {
+  doctors.Doctor.find(function(err, data) {
     if(err) {
       res.sendStatus(500);
     } else {
-      res.json(data);
+      console.log(data);
+      res.send(data);
     }
   });
 
