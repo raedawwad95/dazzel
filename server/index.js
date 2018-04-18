@@ -30,17 +30,10 @@ app.get('/doctors', function (req, res) {
 
 app.post('/doctors',function(req,res){
 
-var newDoc={
- name:req.body.name,
- specialization:req.body.specialization,
- address:req.body.address,
- tel:req.body.tel,
- email:req.body.email,
- rate:req.body.rate
- };
+var newDoc=new doctors.Doctor(req.body);
 
  
- doctors.Doctor.save(newDoc,function(err,doc){
+ newDoc.save(function(err,doc){
  	if(err){
  		console.log("error in saving a new doctor");
 
