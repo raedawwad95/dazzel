@@ -24,15 +24,6 @@ var doctorsSchema = mongoose.Schema({
 
 var Doctor = mongoose.model('Doctor', doctorsSchema);
 
-var selectAll = function(callback) {
-  Doctor.find({}, function(err, doctor) {
-    if(err) {
-      callback(err, null);
-    } else {
-      callback(null, Doctor);
-    }
-  });
-};
 
-module.exports.selectAll = selectAll;
+
 module.exports.Doctor=Doctor;
