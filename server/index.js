@@ -1,5 +1,11 @@
 var express = require('express');
 var bodyParser = require('body-parser');
+ var items = require('../database-mongo');
+
+var app = express();
+
+ app.use(express.static(__dirname + '/../react-client/dist'));
+
 // UNCOMMENT THE DATABASE YOU'D LIKE TO USE
 // var items = require('../database-mysql');
  var doctors = require('../database-mongo');
@@ -8,11 +14,6 @@ var app = express();
 
 // UNCOMMENT FOR REACT
 app.use(express.static(__dirname + '/../react-client/dist'));
-
-// UNCOMMENT FOR ANGULAR
-// app.use(express.static(__dirname + '/../angular-client'));
-// app.use(express.static(__dirname + '/../node_modules'));
-
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
 
