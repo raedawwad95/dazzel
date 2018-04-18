@@ -45,3 +45,4 @@ var selectAll = function(callback) {
 module.exports.selectAll = selectAll;
 module.exports.Doctor=Doctor;
 module.exports.User = User;
+module.exports.Doctor=Doctor;
