@@ -22,7 +22,7 @@ var doctorsSchema = mongoose.Schema({
 
 var Doctor = mongoose.model('Doctor', doctorsSchema);
 
-
+//comment
 
 var userSchema = mongoose.Schema({
   name: String,
