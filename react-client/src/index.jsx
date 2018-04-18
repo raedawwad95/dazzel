@@ -2,18 +2,21 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import $ from 'jquery';
 import List from './components/List.jsx';
+import ListItem from './components/ListItem.jsx';
 
 class App extends React.Component {
   constructor(props) {
     super(props);
     this.state = { 
-      items: []
+      doctors: []
     }
   }
 
-  componentDidMount() {
+  componentDidMount(name,tel,address,email,rate,specialization) {
     $.ajax({
-      url: '/items', 
+      type: 'POST',
+      url: '/doctors',
+      data :{name :name,specialization : specialization,email:email,address:address,rate:rate,tel:tel },
       success: (data) => {
         this.setState({
           items: data
@@ -29,6 +32,7 @@ class App extends React.Component {
     return (<div>
       <h1>Item List</h1>
       <List items={this.state.items}/>
+      <ListItem AddDoctor={this.componentDidMount.bind(this)}/>
     </div>)
   }
 }
