@@ -1,6 +1,5 @@
 var mongoose = require('mongoose');
 mongoose.connect('mongodb://localhost/doctors');
-
 var db = mongoose.connection;
 
 db.on('error', function() {
@@ -21,8 +20,17 @@ var doctorsSchema = mongoose.Schema({
   rate:Number
 });
 
-
 var Doctor = mongoose.model('Doctor', doctorsSchema);
+
+//comment
+
+var userSchema = mongoose.Schema({
+  name: String,
+  password: String
+});
+
+var User = mongoose.model('User',userSchema);
+
 
 var selectAll = function(callback) {
   Doctor.find({}, function(err, doctor) {
@@ -36,3 +44,4 @@ var selectAll = function(callback) {
 
 module.exports.selectAll = selectAll;
 module.exports.Doctor=Doctor;
+module.exports.User = User;
