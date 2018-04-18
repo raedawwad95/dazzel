@@ -13,25 +13,25 @@ class App extends React.Component {
   }
 
   componentDidMount(name,tel,address,email,rate,specialization) {
+    if(name && tel && address && email && rate && specialization){
     $.ajax({
       type: 'POST',
       url: '/doctors',
       data :{name :name,specialization : specialization,email:email,address:address,rate:rate,tel:tel },
       success: (data) => {
-        this.setState({
-          items: data
-        })
+        console.log(data)
       },
       error: (err) => {
         console.log('err', err);
       }
     });
   }
+  }
 
   render () {
     return (<div>
       <h1>Item List</h1>
-      <List items={this.state.items}/>
+    <List />
       <ListItem AddDoctor={this.componentDidMount.bind(this)}/>
     </div>)
   }
