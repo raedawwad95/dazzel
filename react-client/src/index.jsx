@@ -1,40 +1,7 @@
-import React from 'react';
+import React from 'react'
 import ReactDOM from 'react-dom';
-import $ from 'jquery';
-import List from './components/List.jsx';
-import ListItem from './components/ListItem.jsx';
+import App from './App.jsx';
 
-class App extends React.Component {
-  constructor(props) {
-    super(props);
-    this.state = { 
-      doctors: []
-    }
-  }
+ReactDOM.render((<App />), document.getElementById('app'));
 
-  componentDidMount(name,tel,address,email,rate,specialization) {
-    if(name && tel && address && email && rate && specialization){
-    $.ajax({
-      type: 'POST',
-      url: '/doctors',
-      data :{name :name,specialization : specialization,email:email,address:address,rate:rate,tel:tel },
-      success: (data) => {
-        console.log(data)
-      },
-      error: (err) => {
-        console.log('err', err);
-      }
-    });
-  }
-  }
 
-  render () {
-    return (<div>
-      <h1>Item List</h1>
-    <List />
-      <ListItem AddDoctor={this.componentDidMount.bind(this)}/>
-    </div>)
-  }
-}
-
-ReactDOM.render(<App />, document.getElementById('app'));

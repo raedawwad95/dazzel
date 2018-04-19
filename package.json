@@ -25,6 +25,7 @@
     "mysql": "^2.13.0",
     "react": "^15.6.2",
     "react-dom": "^15.6.2",
-    "react-router": "^4.2.0"
+    "react-router": "^4.2.0",
+    "react-router-dom": "^4.3.0-rc.2"
   }
 }
