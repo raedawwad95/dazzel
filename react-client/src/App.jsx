@@ -1,8 +1,9 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
+import $ from 'jquery';
 
 import { BrowserRouter as Router, Route, Link } from "react-router-dom";
-import ListItem from './components/ListItem.jsx'
+import NewDoctor from './components/NewDoctor.jsx'
 const AdminLogIn = () => (
   <Router>
     <div>
@@ -54,17 +55,32 @@ onChangePassword(e){
   })
 }
 Login(){
-  if(this.state.userName==='raed' && this.state.password==='123'){
+  $.ajax({
+    type :'GET',
+    url : '/doctors',
+    success: (data) => {
+//I'm just trying ,,We need a new table for Admin  'userName','password'
+      for (var i = 0; i < data.length; i++) {
+       if(this.state.userName===data[i].name && this.state.password===data[i].address){
     this.setState({
       redirect:true
     })
+    break;
+      }
+      
+        
   }
+      },
+      error: (err) => {
+        console.log('err', err);
+      }
+  })
 }
 render(){
   const { redirect } = this.state;
 
      if (redirect) {
-       return <ListItem />;
+       return <NewDoctor/>;
      }
   return(
  <div>
