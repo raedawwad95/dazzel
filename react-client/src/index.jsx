@@ -1,7 +1,7 @@
 import React from 'react'
 import ReactDOM from 'react-dom';
-import App from './App.jsx';
+import Admin from './App.jsx';
 
-ReactDOM.render((<App />), document.getElementById('app'));
+ReactDOM.render((<Admin />), document.getElementById('app'));
 
 
