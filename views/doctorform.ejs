@@ -1,34 +1,78 @@
-<h2>Doctor Entry</h2>
-<form action="/admin/doctorform" method="post">
-   
-    <div>
-      <label for="name">Name:</label>
-      <input id="name" type="text" name="name">
-    </div>
-    <div>
-      <label for="Specialization">Specialization:</label>
-      <input id="Specialization" type="text" name="Specialization">
-    </div>
+<html>
 
-    <div>
-      <label for="address">Address:</label>
-      <input id="address" type="text" name="address">
-    </div>
+<head>
 
-    <div>
-      <label for="tel">Tel:</label>
-      <input id="tel" type="text" name="tel">
-    </div>
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/css/bootstrap.min.css"/>
+<link rel="stylesheet" href="/css/custom.css"/>
 
-	<div>
-      <label for="rating">Rating:</label>
-      <input id="rate" type="text" name="rate">
-    </div>
+</head>
 
-    <div>
-      <input type="submit" value="Add Doctor">
-    </div>
 
+<body>
+
+
+<div class="container" style="margin-buttom:100px">
+  <div class="text-center reg_msg">
+  <h2 style="color: #808080"><span>Doctor Form Entry</span></h2>
+
+  </div> <br>
+
+
+<div class="row signup ">
+<form action="/admin/login" method="post">
+
+    <div class="row form-group input_group">
+    <div class="col-sm-12">
     
+      <input id="name" type="text" name="name" class="form-control" placeholder="doctor name">
+
+    </div>
+    </div>
+
+
+    <div class="row form-group input_group">
+
+      <div class="col-sm-12">
+       <input id="specialization" type="specialization" name="specialization" class="form-control" placeholder="specialization">
+    </div>
+    </div>
+
+
+
+
+    <div class="row form-group input_group">
+
+      <div class="col-sm-12">
+       <input id="address" type="address" name="address" class="form-control" placeholder="address">
+    </div>
+    </div>
+
+
+ <div class="row form-group input_group">
+
+      <div class="col-sm-12">
+       <input id="tel" type="tel" name="tel" class="form-control" placeholder="telephone">
+    </div>
+    </div>
+
+     <div class="row form-group input_group">
+
+      <div class="col-sm-12">
+       <input id="rate" type="rate" name="rate" class="form-control" placeholder="rate">
+    </div>
+    </div>
+
+
+    <div class="row form-group">
+    <div class="col-sm-12">
+      <input type="submit" value="submit" id="submit" class="form-control btn btn-primary">
+    </div>
+    </div>
 </form>
 
+
+
+
+</div>
+</body>
+</html>
