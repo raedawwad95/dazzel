@@ -16,7 +16,7 @@ var doctorsSchema = mongoose.Schema({
   specialization: String,
   address:String,
   tel:String,
-  email:String,
+  //email:String,
   rate:Number
 });
 
@@ -24,12 +24,14 @@ var Doctor = mongoose.model('Doctor', doctorsSchema);
 
 
 
-var userSchema = mongoose.Schema({
-  name: String,
+var adminSchema = mongoose.Schema({
+  username: {
+	type:String,
+	unique:true},
   password: String
 });
 
-var User = mongoose.model('User',userSchema);
+var User = mongoose.model('User',adminSchema);
 
 
 var selectAll = function(callback) {
@@ -45,4 +47,4 @@ var selectAll = function(callback) {
 module.exports.selectAll = selectAll;
 module.exports.Doctor=Doctor;
 module.exports.User = User;
-module.exports.Doctor=Doctor;
+//module.exports.Doctor=Doctor;
