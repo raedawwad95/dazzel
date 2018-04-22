@@ -1,14 +1,18 @@
 var express = require('express');
 var path=require('path');
-var cookieParser=require('cookie-parser');
-var session=require('express-session');
+
 var bodyParser = require('body-parser');
-var passport=require('passport');
 var app = express();
 var mongoose=require('mongoose');
 var dataModels = require('../database-mongo');
+
+var cookieParser=require('cookie-parser');
+var session=require('express-session');
 var mongoStore=require('connect-mongo')(session);
+var passport=require('passport');
+
 // var routes=require('./userroutes')
+
 var flash=require('express-flash');
 
 require('../config/passport');
