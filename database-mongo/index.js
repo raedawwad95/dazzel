@@ -1,6 +1,7 @@
 var mongoose = require('mongoose');
 mongoose.connect('mongodb://localhost/doctors');
 var db = mongoose.connection;
+var bcrypt=require('bcrypt-nodejs');
 
 db.on('error', function() {
   console.log('mongoose connection error');
@@ -24,14 +25,24 @@ var Doctor = mongoose.model('Doctor', doctorsSchema);
 
 
 
-var adminSchema = mongoose.Schema({
+var userSchema = mongoose.Schema({
   username: {
 	type:String,
 	unique:true},
   password: String
 });
 
-var User = mongoose.model('User',adminSchema);
+
+userSchema.methods.encryptPassword=function(password){
+  return bcrypt.hashSync(password,bcrypt.genSaltSync(10));
+}
+
+userSchema.methods.validPassword=function(password){
+  return bcrypt.compareSync(password,this.password);
+}
+
+
+var User = mongoose.model('User',userSchema);
 
 
 var selectAll = function(callback) {
