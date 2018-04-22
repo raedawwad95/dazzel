@@ -4,13 +4,15 @@ var localStrategy=require('passport-local').Strategy;
 
 var dataModels = require('../database-mongo');
 
-passport.serializeUser(function(user,done){
 
+
+passport.serializeUser(function(user,done){
 	done(null,user.id); //set user id inside session
 });
 
-passport.deserializeUser(function(id,done){
 
+
+passport.deserializeUser(function(id,done){
 	dataModels.User.findById(id,function(err,user){
 		done(err,user);
 	})
