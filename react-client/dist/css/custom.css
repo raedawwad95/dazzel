@@ -1,4 +1,34 @@
+/*body{
+	background-image: url('../photos/pexels-photo-236401.jpeg');
+}*/
+.navbtn{
+	margin-top: 20px;
+	width: 50%;
+	background-color: lightblue;
 
+}
+.img{
+	width: 95%;
+	
+}
+.devImg{
+		text-align: center;
+
+}                              
+#Logo{
+	width: 30%;
+	height: 20%;
+}
+.about{
+	margin-bottom: 10px; 
+}
+.spbutton{
+	margin:2%;
+
+}
+.homebtn{
+	width:300px;
+}
 .signup{
 	text-align:center;
 	width:50%;
@@ -6,7 +36,14 @@
 	margin:auto;
 
 }
-
+.docInfo{
+	width:300px;
+	background-color: AliceBlue		;
+}
+#docImg{
+	width:50%;
+	 height:50%;
+}
 .reg_msg{
 	width:60%;
 	height:auto;
@@ -21,4 +58,7 @@
 	padding: 12px 21px 12px 21px;
 	border:1px solid #efefef;
 
+}
+ .fa-facebook:hover { /* round facebook icon*/
+    background: #4060A5;
 }
