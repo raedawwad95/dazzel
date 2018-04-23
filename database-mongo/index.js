@@ -15,7 +15,7 @@ db.once('open', function() {
 var doctorsSchema = mongoose.Schema({
   name: String,
   specialization: String,
-  address:String,
+  address:Object,
   tel:String,
   //email:String,
   rate:Number
