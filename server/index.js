@@ -143,16 +143,16 @@ app.get('/profile',function(req,res){
 
 
 // to get all dooctors from db
-app.get('/doctors', function (req, res) {
-  //console.log(req.params.id); 
-  dataModels.Doctor.find(function(err, data) {
+app.get('/doctors/:spic', function (req, res) {
+  console.log(req.params.spic); 
+  dataModels.Doctor.find({specialization:req.params.spic},function(err, data) {
     if(err) {
       res.sendStatus(500);
     } else {
-      //console.log(data);
+      
       res.send(data);
     }
-  });
+  }).limit(3).sort( { rate: -1} );
 
 });
 
