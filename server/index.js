@@ -45,7 +45,10 @@ app.set('view engine','ejs');
 
 
 
+app.get('/map',function(req,res){
+  res.render('map');
 
+})
 
 
 app.get('/admin',function(req,res){
@@ -64,11 +67,34 @@ app.get('/admin/doctorform',function(req,res){
 
 
 app.post('/admin/doctorform',function(req,res){
-  
- // save to the database
+  console.log(req.body.specialization)
+  var add=req.body.address
+  var switch_value=true
+  var lat="";
+  var lng="";
+  //to sprit the address to two string and insert it to object in database
+  for (var i = 0; i < add.length; i++) {
+    if(add[i]===","){
+      switch_value=false
+      i++
+    }
+    if(switch_value){
+      lat+=add[i]
+    }else{
+      lng+=add[i]
+    }
+  }
+  var doctor_data={
+    name:req.body.name,
+    specialization:req.body.specialization,
+    address:{lat:parseFloat(lat),lng:parseFloat(lng)},
+    tel:req.body.tel,
+    rate:req.body.rate
+  }
+  console.log(doctor_data.address)
+ var newDoc=new dataModels.Doctor(doctor_data);
 
- var newDoc=new dataModels.Doctor(req.body);
-
+ 
  
  newDoc.save(function(err,doc){
   if(err){
@@ -113,9 +139,6 @@ app.get('/profile',function(req,res){
   req.logout();
   res.redirect('/');
 })
-
-
-
 
 
 
