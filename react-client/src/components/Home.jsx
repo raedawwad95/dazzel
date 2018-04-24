@@ -76,6 +76,7 @@ export default class Home extends Component{
 			<div className='col-sm-8'>
 				<List specialty={this.state.specialty}/>
 				</div>
+			
 				</div>
 			</div>
 			<hr/>
