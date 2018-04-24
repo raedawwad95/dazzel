@@ -67,7 +67,7 @@ app.get('/admin/doctorform',function(req,res){
 
 
 app.post('/admin/doctorform',function(req,res){
-  console.log(req.body.specialization)
+  console.log("tal",req.body.specialization)
   var add=req.body.address
   var switch_value=true
   var lat="";
@@ -144,7 +144,7 @@ app.get('/profile',function(req,res){
 
 // to get all dooctors from db
 app.get('/doctors/:spic', function (req, res) {
-  console.log(req.params.spic); 
+  console.log('aa',req.params.spic); 
   dataModels.Doctor.find({specialization:req.params.spic},function(err, data) {
     if(err) {
       res.sendStatus(500);

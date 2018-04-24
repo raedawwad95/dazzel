@@ -45,12 +45,12 @@ class List extends React.Component{
 				      <br/>
 				      	{this.state.specialty.map(function(spe,index){
 				      		return(
-				      			<div className="container ">
+				      			<div className="container " key={index}>
 				      			<div className="jumbotron docInfo">
 				      			<div className="card-body">
 				      			<img src='../../photos/five.png' alt="Card image" id='docImg'/>                              
 				      			<h1 className="card-title">{spe.name}</h1>
-                                <p className="card-text">{spe.address}</p>
+                                <p className="card-text">{spe.rate}</p>
                                 </div>
 				      			</div>
 				      			</div>
