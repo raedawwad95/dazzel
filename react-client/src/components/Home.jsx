@@ -2,6 +2,7 @@ import React,{Component} from 'react';
 import {Jumbotron, Navbar,Nav,NavItem,Grid,Row,Col,Image,Button,MenuItem,ButtonToolbar,DropdownButton,Thumbnail} from 'react-bootstrap';
 import $ from 'jquery';
  import List from './List.jsx'
+import { SocialIcon } from 'react-social-icons';
 
 
 export default class Home extends Component{
@@ -26,15 +27,13 @@ export default class Home extends Component{
 			<div>
 			<Navbar>
 			<Nav >
-			  <Navbar.Header>
     
       <NavItem ><img src='../../photos/Logo.jpg'id='Logo'/>
       </NavItem>
    
-  </Navbar.Header>
-				
+ 
 	</Nav>
-  <Nav pullRight bsStyle="tabs "    >
+  <Nav pullRight >
     <NavItem className='btn  navbtn' eventKey='home' href='#home'>
       Home
     </NavItem>
@@ -59,12 +58,17 @@ export default class Home extends Component{
 			<DropdownButton className="btn btn-info  homebtn" bsStyle='default' onSelect={this.onSelect}title ='choose specialty'
 			noCaret
 			id='dropdown-no-caret'>
-			<MenuItem eventKey='Eyes'>Eyes</MenuItem>
-			<MenuItem eventKey='2'>nose</MenuItem>
-			<MenuItem eventKey='3'>head</MenuItem>
-			<MenuItem eventKey='4'>ear</MenuItem>
-			<MenuItem eventKey='5'>Eyesss</MenuItem>
-			<MenuItem eventKey='6'>noseee</MenuItem>
+			<MenuItem eventKey='otolaryngologists(ear,nose,throat)'>otolaryngologists(ear,nose,throat)</MenuItem>
+			<MenuItem eventKey='cardiology (heart)'>cardiology(heart)</MenuItem>
+			<MenuItem eventKey='neurologists(brain and nervus system)'>neurologists(brain and nervus system)</MenuItem>
+			<MenuItem eventKey='opthalmologist(eye)'>opthalmologist(eye)</MenuItem>
+			<MenuItem eventKey='Pulmonolgy (respiratory)'>Pulmonolgy (respiratory)</MenuItem>
+			<MenuItem eventKey='general'>general </MenuItem>
+			<MenuItem eventKey='dermatology(skin)'>dermatology(skin) </MenuItem>
+			<MenuItem eventKey='Pediatric(children)'>Pediatric(children) </MenuItem>
+			<MenuItem eventKey='allergologist'>allergologist </MenuItem>
+			
+
 
 			</DropdownButton>
 			</ButtonToolbar>
@@ -78,7 +82,12 @@ export default class Home extends Component{
  			<div className='container about' id='about'>
  				
  					<h2> Contact Us :</h2>
-<a type="button" className="btn-floating btn-lg btn-fb"><i className="fa fa-facebook"></i></a>
+<SocialIcon url='http://twitter.com'  />
+<SocialIcon url='http://facebook.com' />
+<SocialIcon url='http://slack.com'/> 
+<SocialIcon url='http://github.com'  /> 
+
+
  				
  			</div>
 			</div>
