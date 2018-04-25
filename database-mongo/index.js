@@ -11,14 +11,27 @@ db.once('open', function() {
   console.log('mongoose connected successfully');
 });
 
-
+//add unique and required to some data in Schema
 var doctorsSchema = mongoose.Schema({
-  name: String,
-  specialization: String,
-  address:Object,
-  tel:String,
+  name: {
+    type:String,
+    required:true,
+    unique:true
+  },
+  specialization: {
+    type:String,
+    required:true
+  },
+  address: {
+    type:Object,
+    required:true
+  },
+  tel: {
+    type:Number,
+    unique:true
+  },
   //email:String,
-  rate:Number
+  rate: Number
 });
 
 var Doctor = mongoose.model('Doctor', doctorsSchema);
