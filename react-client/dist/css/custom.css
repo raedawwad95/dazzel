@@ -1,14 +1,32 @@
 /*body{
 	background-image: url('../photos/pexels-photo-236401.jpeg');
 }*/
+button{
+	font-style: italic;
+    background-color: lightblue;
+
+
+}
+#about{
+	font-family: Arial;
+	font-style: italic;
+	background-color: lightblue;
+	border-radius: 60px;
+	padding: 20px;
+	color: white;
+	text-align: center;
+}
 .navbtn{
-	margin-top: 20px;
-	width: 50%;
+	font-style: italic;
+	margin-top: 40px;
+	margin-left: 5px;
+	width: 100px;
 	background-color: lightblue;
 
 }
 .img{
 	width: 95%;
+	height: 400px;
 	
 }
 .devImg{
@@ -38,7 +56,7 @@
 }
 .docInfo{
 	width:300px;
-	background-color: AliceBlue		;
+	background-color: AliceBlue;
 }
 #docImg{
 	width:50%;
