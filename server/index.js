@@ -11,8 +11,8 @@ var session=require('express-session');
 var mongoStore=require('connect-mongo')(session);
 var passport=require('passport');
 
-// var routes=require('./userroutes')
 
+// flash is used to send messages to the client without redirect
 var flash=require('express-flash');
 
 require('../config/passport');
@@ -24,6 +24,8 @@ app.use(bodyParser.urlencoded({ extended: false }));
 
 // app.use(cookieParser);
 
+
+// use session middleware and configure it
 app.use(session({secret:'mysecretsession',resave:true,saveUninitialized: true,
 
    store:new mongoStore({mongooseConnection: mongoose.connection,collection: 'session',})
@@ -32,16 +34,14 @@ app.use(session({secret:'mysecretsession',resave:true,saveUninitialized: true,
 app.use(passport.initialize());
 app.use(passport.session());
 
-// app.use(routes);
 
 app.use(flash());
 
-// set template
+// set template engine 
 app.set('view engine','ejs');
 
 
-
-
+/* list of all routes*/
 
 app.get('/admin',function(req,res){
   res.render('admin');
@@ -51,7 +51,6 @@ app.get('/admin',function(req,res){
 app.get('/admin/signup',function(req,res){
   res.render('signup');
 })
-
 
 app.get('/admin/doctorform',function(req,res){
   res.render('doctorform');
@@ -80,17 +79,14 @@ app.post('/admin/doctorform',function(req,res){
   //insert doctor_data to the database
  var newDoc=new dataModels.Doctor(doctor_data);
 
- 
- 
  newDoc.save(function(err,doc){
   if(err){
-    console.log("error in saving a new doctor");
-
+  	console.log("error in saving a new doctor");
+  	res.send("error in saving DB")
   }
   else{
     res.redirect('/admin/doctorform');
   }
-
 
  })
 }else if(req.body.action==="Delete doctor"){
@@ -115,10 +111,16 @@ app.post('/admin/doctorform',function(req,res){
         newDoctor.save(function(err, result2){
             if(!err) {
                res.render('doctorform')
-            } else res.send(err);
+            } else {
+            	 res.sendStatus(500);
+	             res.send(err);
+              }
         })  
 
-       } else res.send(err);
+       } else {
+       	res.setStatus(500);
+       	res.send(err);
+       }
     }); 
 }
 
@@ -156,20 +158,19 @@ app.get('/profile',function(req,res){
 
 
 
-// to get all dooctors from db
+// get high rate doctors in a specific spcialization
 app.get('/doctors/:rateSpic', function (req, res) {
-  
-  dataModels.Doctor.find({specialization:req.params.rateSpic},function(err, data) {
+    dataModels.Doctor.find({specialization:req.params.rateSpic},function(err, data) {
     if(err) {
       res.sendStatus(500);
     } else {
-      
       res.send(data);
     }
   }).limit(3).sort( { rate: -1} );
 
 });
 
+// get all nearest doctors based on specialty
 app.get('/docNearst/:spic', function (req, res) {
   console.log('aa',req.params.spic); 
   dataModels.Doctor.find({specialization:req.params.spic},function(err, data) {

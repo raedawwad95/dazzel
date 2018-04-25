@@ -1,7 +1,7 @@
+var bcrypt=require('bcrypt-nodejs');
 var mongoose = require('mongoose');
 mongoose.connect('mongodb://localhost/doctors');
 var db = mongoose.connection;
-var bcrypt=require('bcrypt-nodejs');
 
 db.on('error', function() {
   console.log('mongoose connection error');
@@ -36,28 +36,7 @@ var doctorsSchema = mongoose.Schema({
 
 var Doctor = mongoose.model('Doctor', doctorsSchema);
 
-
-
-var userSchema = mongoose.Schema({
-  username: {
-	type:String,
-	unique:true},
-  password: String
-});
-
-
-userSchema.methods.encryptPassword=function(password){
-  return bcrypt.hashSync(password,bcrypt.genSaltSync(10));
-}
-
-userSchema.methods.validPassword=function(password){
-  return bcrypt.compareSync(password,this.password);
-}
-
-
-var User = mongoose.model('User',userSchema);
-
-
+// to retrive all doctors
 var selectAll = function(callback) {
   Doctor.find({}, function(err, doctor) {
     if(err) {
@@ -68,7 +47,26 @@ var selectAll = function(callback) {
   });
 };
 
+
+var userSchema = mongoose.Schema({
+  username: {
+	type:String,
+	unique:true},
+  password: String
+});
+
+var User = mongoose.model('User',userSchema);
+
+// user password encryption
+userSchema.methods.encryptPassword=function(password){
+  return bcrypt.hashSync(password,bcrypt.genSaltSync(10));
+}
+
+// compare the user password and the encrypted one
+userSchema.methods.validPassword=function(password){
+  return bcrypt.compareSync(password,this.password);
+}
+
 module.exports.selectAll = selectAll;
 module.exports.Doctor=Doctor;
 module.exports.User = User;
-//module.exports.Doctor=Doctor;
