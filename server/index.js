@@ -144,8 +144,8 @@ app.get('/profile',function(req,res){
 
 // to get all dooctors from db
 app.get('/doctors/:rateSpic', function (req, res) {
-  console.log('aa',req.params.spic); 
-  dataModels.Doctor.find({specialization:req.params.spic},function(err, data) {
+  
+  dataModels.Doctor.find({specialization:req.params.rateSpic},function(err, data) {
     if(err) {
       res.sendStatus(500);
     } else {

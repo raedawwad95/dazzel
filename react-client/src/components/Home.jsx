@@ -83,6 +83,7 @@ export default class Home extends Component{
  			<div className='container about' id='about'>
  				
  					<h2> Contact Us :</h2>
+ 					
 <SocialIcon url='http://twitter.com'  />
 <SocialIcon url='http://facebook.com' />
 <SocialIcon url='http://slack.com'/> 
