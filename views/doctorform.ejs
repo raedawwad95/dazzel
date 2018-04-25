@@ -29,6 +29,19 @@
 <div class="row signup ">
 <form action="/admin/doctorform" method="post">
 
+  <div class="row form-group input_group">
+
+      <div class="col-sm-12">
+       <!-- add action to admin> -->
+      <select  class="form-control" id="specialization" name="action" >
+        <option hidden>Choose your action !</option>
+      <option>Add doctor</option>
+      <option>Delete doctor</option>
+      <option>Modify doctor data</option>
+    </select>
+    </div>
+    </div>
+
     <div class="row form-group input_group">
     <div class="col-sm-12">
     
@@ -40,7 +53,19 @@
     <div class="row form-group input_group">
 
       <div class="col-sm-12">
-       <input id="specialization" type="specialization" name="specialization" class="form-control" placeholder="specialization">
+       <!-- change input type to select> -->
+      <select  class="form-control" id="specialization" name="specialization">
+      <option hidden>Choose doctor specialize</option>
+      <option>otolaryngologists(ear,nose,throat)</option>
+      <option>cardiology(heart)</option>
+      <option>neurologists(brain and nervus system)</option>
+      <option>opthalmologist(eye)</option>
+      <option>Pulmonolgy (respiratory)</option>
+      <option>general</option>
+      <option>dermatology(skin)</option>
+      <option>Pediatric(children)</option>
+      <option>allergologist</option>
+    </select>
     </div>
     </div>
 

@@ -43,14 +43,6 @@ app.set('view engine','ejs');
 
 
 
-
-
-app.get('/map',function(req,res){
-  res.render('map');
-
-})
-
-
 app.get('/admin',function(req,res){
   res.render('admin');
 
@@ -67,31 +59,25 @@ app.get('/admin/doctorform',function(req,res){
 
 
 app.post('/admin/doctorform',function(req,res){
-  console.log("tal",req.body.specialization)
-  var add=req.body.address
-  var switch_value=true
-  var lat="";
-  var lng="";
-  //to sprit the address to two string and insert it to object in database
-  for (var i = 0; i < add.length; i++) {
-    if(add[i]===","){
-      switch_value=false
-      i++
-    }
-    if(switch_value){
-      lat+=add[i]
-    }else{
-      lng+=add[i]
-    }
-  }
+  //convert adress from string to object that have two key lat and lng
+  var latlngStr=req.body.address
+  var latlngObj={
+    lat:parseFloat(latlngStr.split(",")[0]),
+    lng:parseFloat(latlngStr.split(",")[1])
+  };
+// we have three option here 
+  if(req.body.action==="Add doctor"){
+  
+  //create a variable doctor_data hold all new data
   var doctor_data={
     name:req.body.name,
     specialization:req.body.specialization,
-    address:{lat:parseFloat(lat),lng:parseFloat(lng)},
+    address:latlngObj,
     tel:req.body.tel,
     rate:req.body.rate
   }
-  console.log(doctor_data.address)
+
+  //insert doctor_data to the database
  var newDoc=new dataModels.Doctor(doctor_data);
 
  
@@ -102,11 +88,39 @@ app.post('/admin/doctorform',function(req,res){
 
   }
   else{
-    console.log("successful saving doctor");
     res.redirect('/admin/doctorform');
   }
 
+
  })
+}else if(req.body.action==="Delete doctor"){
+  // delete doctor by finding his name and delete it{ name } using deleteOne
+  dataModels.Doctor.deleteOne({ 'name': req.body.name },  function (err, doctor) {
+  if (err) {
+    return handleError(err)
+  }else{
+    res.render('doctorform');
+  };
+
+});
+}else{
+  // modify doctor by finding his name and modify it{ name } using findone and modify data in result  
+  dataModels.Doctor.findOne( { "name":req.body.name}, function(err, result){
+       if (!err && result) {
+        result.specialization = req.body.specialization; // update ur values goes here
+        result.address = latlngObj;
+        result.tel = req.body.tel;
+        result.rate = req.body.rate;
+        var newDoctor = new dataModels.Doctor(result);
+        newDoctor.save(function(err, result2){
+            if(!err) {
+               res.render('doctorform')
+            } else res.send(err);
+        })  
+
+       } else res.send(err);
+    }); 
+}
 
 })
 
