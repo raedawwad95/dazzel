@@ -6,6 +6,7 @@ var mongoose = require('mongoose');
 
 mongoose.connect('mongodb://dazzel:dazzel123456@ds255329.mlab.com:55329/doctorsdb');
 
+
 var db = mongoose.connection;
 
 db.on('error', function() {
@@ -31,10 +32,10 @@ var doctorsSchema = mongoose.Schema({
     type:Object,
     required:true
   },
-  tel: {
-    type:Number,
+  tel: {type:Number,
     unique:true
   },
+  
   //email:String,
   rate: Number
 });
