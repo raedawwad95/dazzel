@@ -5,101 +5,141 @@
 <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/css/bootstrap.min.css"/>
 <link rel="stylesheet" href="/css/custom.css"/>
 <style type="text/css">
-  #map{
-      height: 400px;
-      width: 400px;
-      float: right;
-    }
+/* designing the page */
+ #map{
+     height: 500px;
+     width: 500px;
+     float: right;
+     position: absolute;
+    top: 200px;
+    right:200px;
+    font-size: 18px;
+    opacity: 0.8;
+    filter: alpha(opacity=50);
+   }
+#styl{
+    position: absolute;
+    bottom: 100px;
+    left: 200px;
+    font-size: 18px;
+    width:300px;
+}
+#h1{
+  color: black;
+  position: absolute;
+  top :30;
+  right:550;
+  background: lightblue;
+  padding: 15px;
+}
+#mybody {
+     background-image:url('https://i.imgur.com/SZ5thBK.jpg');
+     background-size:cover;
+     background-repeat: no-repeat;
+     background-position: center;
+   }
+  #x{
+    opacity: 0.8;
+    filter: alpha(opacity=50);
+  }
 </style>
 
 
 </head>
 
 
-<body>
-
-
+<body id="mybody">
+<div >
 <div class="container" style="margin-buttom:100px">
-  <div class="text-center reg_msg">
-  <h2 style="color: #808080"><span>Doctor Form Entry</span></h2>
+ <div class="text-center reg_msg">
+ <h1 id="h1"><span>Doctor Form Entry</span></h1>
 
-  </div> <br>
+ </div> <br>
 
-
+<div id="styl">
 <div class="row signup ">
-<form action="/admin/doctorform" method="post">
+<form id="x" action="/admin/doctorform" method="post">
+ <div class="row form-group input_group">
+   
+   <div class="col-sm-12">
+     <input id="name" type="text" name="name" class="form-control" placeholder="doctor name">
 
-  <div class="row form-group input_group">
+   </div>
+ </div>
+ <div class="row form-group input_group">
 
-      <div class="col-sm-12">
-       <!-- add action to admin> -->
-      <select  class="form-control" id="specialization" name="action" >
-        <option hidden>Choose your action !</option>
-      <option>Add doctor</option>
-      <option>Delete doctor</option>
-      <option>Modify doctor data</option>
-    </select>
-    </div>
-    </div>
+     <div class="col-sm-12">
+      <!-- add action to admin> -->
+     <select  class="form-control" id="specializatiion" name="action" >
+       <option hidden>Choose your action !</option>
+     <option>Add doctor</option>
+     <option>Delete doctor</option>
+     <option>Modify doctor data</option>
+   </select>
+   </div>
+   </div>
+   <br>
+   <div class="row form-group input_group">
 
-    <div class="row form-group input_group">
-    <div class="col-sm-12">
-    
-      <input id="name" type="text" name="name" class="form-control" placeholder="doctor name">
-
-    </div>
-    </div>
-
-    <div class="row form-group input_group">
-
-      <div class="col-sm-12">
-       <!-- change input type to select> -->
-      <select  class="form-control" id="specialization" name="specialization">
-      <option hidden>Choose doctor specialize</option>
-      <option>otolaryngologists(ear,nose,throat)</option>
-      <option>cardiology(heart)</option>
-      <option>neurologists(brain and nervus system)</option>
-      <option>opthalmologist(eye)</option>
-      <option>Pulmonolgy (respiratory)</option>
-      <option>general</option>
-      <option>dermatology(skin)</option>
-      <option>Pediatric(children)</option>
-      <option>allergologist</option>
-    </select>
-    </div>
-    </div>
-
-     <div class="row form-group input_group">
-
-      <div class="col-sm-12" >
-       <input id="address" type="address" name="address" class="form-control" placeholder="address">
-       
-    </div>
-    </div>
-  
+     <div class="col-sm-12">
+      <!-- change input type to select> -->
+     <select  class="form-control" id="specialization" name="specialization">
+     <option hidden>Choose doctor specialize</option>
+     <option>otolaryngologists(ear,nose,throat)</option>
+     <option>cardiology(heart)</option>
+     <option>neurologists(brain and nervus system)</option>
+     <option>opthalmologist(eye)</option>
+     <option>Pulmonolgy (respiratory)</option>
+     <option>general</option>
+     <option>dermatology(skin)</option>
+     <option>Pediatric(children)</option>
+     <option>allergologist</option>
+   </select>
+   </div>
+   </div>
+   <br>
     <div class="row form-group input_group">
 
-      <div class="col-sm-12">
-        <input id="tel" type="tel" name="tel" class="form-control" placeholder="telephone">
-      </div>
-    </div>
+     <div class="col-sm-12" >
+       <!-- the readonly is to add the location by clicking on the map,, not to allow the admin to insert any data inside it -->
+      <input id="address" type="address" name="address" class="form-control" readonly="readonly" placeholder="please click on the map">
+      
+   </div>
+   </div>
+   
+   <div class="row form-group input_group">
 
-     <div class="row form-group input_group">
+     <div class="col-sm-12">
+       <!-- make tel input accept only number : 
+       (event.charCode == 8 || event.charCode == 0 || event.charCode == 13 ) condition handles the case when DELETE, BACKSPACE or ENTER keys are pressed 
+         (event.charCode >= 48 && event.charCode <= 57 ) means that only 0 (decimal code 48) and all other digits up to 9 (decimal code 57) will be returned   -->
+       <input id="tel" onkeypress="return (event.charCode == 8 || event.charCode == 0 || event.charCode == 13) ? null : event.charCode >= 48 && event.charCode <= 57" name="tel"  placeholder="doctor telephone"/>
+     </div>
+   </div>
+   <div class="row form-group input_group">
 
-      <div class="col-sm-12">
-       <input id="rate" type="rate" name="rate" class="form-control" placeholder="rate">
-    </div>
-    </div>
+     <div class="col-sm-12">
+      <select  class="form-control" id="specializationn" name="rate" >
+       <option hidden>Rate the doctor</option>
+     <option>1</option>
+     <option>2</option>
+     <option>3</option>
+     <option>4</option>
+     <option>5</option>
+   </select>
+   </div>
+   </div>
 
-
-    <div class="row form-group">
-    <div class="col-sm-12">
-      <input type="submit" value="submit" id="submit" class="form-control btn btn-primary">
-    </div>
-    </div>
+   <div class="row form-group">
+   <div class="col-sm-12">
+     <input type="submit" value="submit" id="submit" class="form-control btn btn-primary">
+   </div>
+   </div>
 </form>
 </div>
- <div id="map"></div> 
+</div>
+<div id="map"></div>
+
     <script>
       var map;
       var markers = [];
@@ -151,11 +191,13 @@
         markers = [];
       }
           
+     
     </script>
   
     <script async defer
       src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBuSR5OfhPRaOUQCl3buvyunzwQ7GXvv1E&callback=initMap">
     </script>
+</div>
 </div>
 </body>
 </html>
