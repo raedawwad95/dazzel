@@ -78,8 +78,8 @@ class Map extends React.Component {
               <div className="jumbotron docInfo">
                   <div className="card-body">
                     <img src='../../photos/five.png' alt="Card image" id='docImg'/>                              
-                    <h3 className="card-title">Dr.{spe.name}</h3>
-                    <p className="card-text">distance: {spe.des}</p>
+                    <h2 className="DocName">Dr.{spe.name}</h2>
+                    <h3 className="cardText ">distance: {spe.des}</h3>
                   </div>
                 </div>
             </div>
