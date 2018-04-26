@@ -64,6 +64,7 @@ class Rate extends React.Component{
 				      		       <img src='../../photos/five.png' alt="Card image" id='docImg'/>                              
 				      		       <h2 className="DocName">Dr.{spe.name}</h2>
                                    <h3 className="cardText">Rate: {spe.rate}</h3>
+                                   <h3 className="cardText">Tel: {spe.tel}</h3>
                                 </div>
 				      		</div>
 			            </div>
