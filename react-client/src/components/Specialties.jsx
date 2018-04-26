@@ -35,7 +35,7 @@ export default class Specialties extends Component{
 						<div className='col-sm-4'>
 							<ButtonToolbar >
 
-								<DropdownButton className="btn btn-info  homebtn" bsStyle='default' onSelect={this.onSelect}title ='choose specialty'
+								<DropdownButton className="btn btn-info  homebtn"  onSelect={this.onSelect}title ='choose specialty'
 									noCaret
 									id='dropdown-no-caret'>
 										<MenuItem eventKey='otolaryngologists(ear,nose,throat)'>otolaryngologists(ear,nose,throat)</MenuItem>
