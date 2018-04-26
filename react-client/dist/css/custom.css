@@ -1,8 +1,14 @@
-
+.DocName{
+	size: 5px;
+}
 button{
 	font-style: italic;
     background-color: lightblue;
 
+
+}
+.raed{
+	    position: -webkit-sticky;
 
 }
 #about{

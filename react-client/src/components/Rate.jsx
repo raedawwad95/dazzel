@@ -62,8 +62,8 @@ class Rate extends React.Component{
 				      		 <div className="jumbotron docInfo">
 				      		    <div className="card-body">
 				      		       <img src='../../photos/five.png' alt="Card image" id='docImg'/>                              
-				      		       <h1 className="card-title">{spe.name}</h1>
-                                   <p className="card-text">{spe.rate}</p>
+				      		       <h3 className="DocName">Dr.{spe.name}</h3>
+                                   <p className="card-text">Rate: {spe.rate}</p>
                                 </div>
 				      		</div>
 			            </div>
@@ -71,6 +71,7 @@ class Rate extends React.Component{
 				    })}
 		        </div>
 				<div className="col-sm-6">
+
 				    <Map specialty={this.props.specialty}/> 
 				 
 				</div>

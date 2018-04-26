@@ -33,18 +33,6 @@ export default class Home extends Component{
 			
 				<Specialties/>
 
-				<hr/>
- 				<div className='container about' id='about'>
- 					<h2> Contact Us :</h2>
- 					
-					<SocialIcon url='http://twitter.com'  />
-					<SocialIcon url='http://facebook.com' />
-					<SocialIcon url='http://slack.com'/> 
-					<SocialIcon url='http://github.com'  /> 
-
-
- 				
- 				</div>
 			</div>
 		)
 	}
