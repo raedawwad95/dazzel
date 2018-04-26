@@ -30,7 +30,7 @@ export default class Specialties extends Component{
 			
 				<div id="home" className=" container spbutton">
 			
-			
+				
 					<div className='row'>
 						<div className='col-sm-4'>
 							<ButtonToolbar >
