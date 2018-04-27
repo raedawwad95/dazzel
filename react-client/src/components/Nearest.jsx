@@ -34,7 +34,6 @@ class Map extends React.Component {
   var d = earthRadius* c; // Distance in km
   return d;
 }
-
 deg2rad(deg) {
   return deg * (Math.PI/180);
 }
