@@ -185,7 +185,7 @@ app.post('/admin/doctorform',function(req,res){
        	   }
     	}); 
 	}
->>>>>>> inden
+
 })
 
 app.post('/admin/signup',passport.authenticate('local.signup',{
