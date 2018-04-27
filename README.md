@@ -2,7 +2,7 @@
 # Doctory
 This app aims to guide patients to choose suitable doctors in Amman according to their status. We added features to suggest either high rated(based on Jeeran website) or nearby doctors in emergency case.
 
-##Prerequisites
+## Prerequisites
 Make sure you installed the following technologies locally:
 
     React using webpack
@@ -10,7 +10,7 @@ Make sure you installed the following technologies locally:
     Express
     Mongodb
 
-##Getting started & Installation
+## Getting started & Installation
 
  - Get a copy of the repo 
 `   $ git clone https://github.com/Dazzel-18/dazzel.git`
@@ -24,11 +24,11 @@ Make sure you installed the following technologies locally:
 - Run react client
    `$ npm run server-dev`
    
-# Running the test
+## Running the test
 `npm run test`
 
 
-# File Hieghrarcy  
+## File Hieghrarcy  
     dazzel+
     ..../server
     ........index.js
@@ -61,11 +61,11 @@ Make sure you installed the following technologies locally:
     ....README.md
     
     
-# Delopyment
+## Delopyment
 You can see a demo of the app in **Heroku**:
 
 
-# Future contributers
+## Future contributers
 
 
 
