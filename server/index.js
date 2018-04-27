@@ -160,6 +160,18 @@ app.get('/docNearst/:spic', function (req, res) {
 });
 
 
+
+app.get('/doctors',function(req,res){
+  dataModels.Doctor.find({},function(err,data){
+    if(err){
+      res.sendStatus(500);
+    }
+    else{
+      res.sendStatus(200)
+    }
+})
+})
+
 app.listen(process.env.PORT||3000, function() {
   console.log('listening on port 3000!');
 });
