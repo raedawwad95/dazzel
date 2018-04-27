@@ -1,16 +1,13 @@
 var express = require('express');
 var path=require('path');
-
 var bodyParser = require('body-parser');
 var app = express();
 var mongoose=require('mongoose');
 var dataModels = require('../database-mongo');
-
 var cookieParser=require('cookie-parser');
 var session=require('express-session');
 var mongoStore=require('connect-mongo')(session);
 var passport=require('passport');
-
 
 // flash is used to send messages to the client without redirect
 var flash=require('express-flash');
@@ -24,7 +21,6 @@ app.use(bodyParser.urlencoded({ extended: false }));
 
 // app.use(cookieParser);
 
-
 // use session middleware and configure it
 app.use(session({secret:'mysecretsession',resave:true,saveUninitialized: true,
 
@@ -33,29 +29,27 @@ app.use(session({secret:'mysecretsession',resave:true,saveUninitialized: true,
 
 app.use(passport.initialize());
 app.use(passport.session());
-
-
 app.use(flash());
 
 // set template engine 
 app.set('view engine','ejs');
 
-
-/* list of all routes*/
-
+/* list of all routes
+.....................................*/
 app.get('/admin',function(req,res){
+  res.status(200);
   res.render('admin');
-
 })
 
 app.get('/admin/signup',function(req,res){
+  res.status(200);
   res.render('signup');
 })
 
 app.get('/admin/doctorform',function(req,res){
+  res.status(200);
   res.render('doctorform');
 })
-
 
 app.post('/admin/doctorform',function(req,res){
   //convert adress from string to object that have two key lat and lng
@@ -82,9 +76,11 @@ app.post('/admin/doctorform',function(req,res){
  newDoc.save(function(err,doc){
   if(err){
   	console.log("error in saving a new doctor");
+    res.status(500);
   	res.send("error in saving DB")
   }
   else{
+    res.status(302);
     res.redirect('/admin/doctorform');
   }
 
@@ -95,9 +91,9 @@ app.post('/admin/doctorform',function(req,res){
   if (err) {
     return handleError(err)
   }else{
+    res.status(302);
     res.render('doctorform');
   };
-
 });
 }else{
   // modify doctor by finding his name and modify it{ name } using findone and modify data in result  
@@ -112,21 +108,17 @@ app.post('/admin/doctorform',function(req,res){
             if(!err) {
                res.render('doctorform')
             } else {
-            	 res.sendStatus(500);
+            	 res.status(500);
 	             res.send(err);
               }
         })  
-
        } else {
-       	res.setStatus(500);
+       	res.status(500);
        	res.send(err);
        }
     }); 
 }
-
 })
-
-
 
 app.post('/admin/signup',passport.authenticate('local.signup',{
   successRedirect:'/admin',
@@ -134,29 +126,15 @@ app.post('/admin/signup',passport.authenticate('local.signup',{
   failureFlash:true 
 }));
 
-
 app.get('/admin/login',function(req,res){
   res.render('login',{loginError:req.flash('loginError')});
 })
-
 
 app.post('/admin/login',passport.authenticate('local.login',{
   successRedirect:'/admin/doctorform',
   failureRedirct:'login',
   failureFlash:true 
 }));
-
-app.get('/profile',function(req,res){
-    res.render('profile',{user:req.user,loginError:req.flash('loginError')});
-
-})
-
-app.get('/profile',function(req,res){
-  req.logout();
-  res.redirect('/');
-})
-
-
 
 // get high rate doctors in a specific spcialization
 app.get('/doctors/:rateSpic', function (req, res) {
@@ -167,23 +145,32 @@ app.get('/doctors/:rateSpic', function (req, res) {
       res.send(data);
     }
   }).limit(3).sort( { rate: -1} );
-
 });
 
 // get all nearest doctors based on specialty
 app.get('/docNearst/:spic', function (req, res) {
-  console.log('aa',req.params.spic); 
   dataModels.Doctor.find({specialization:req.params.spic},function(err, data) {
     if(err) {
       res.sendStatus(500);
     } else {
-      
+      res.status(200);
       res.send(data);
     }
   })
-
 });
 
+
+
+app.get('/doctors',function(req,res){
+  dataModels.Doctor.find({},function(err,data){
+    if(err){
+      res.sendStatus(500);
+    }
+    else{
+      res.sendStatus(200)
+    }
+})
+})
 
 app.listen(process.env.PORT||3000, function() {
   console.log('listening on port 3000!');

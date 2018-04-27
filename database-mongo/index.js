@@ -1,11 +1,9 @@
 var bcrypt=require('bcrypt-nodejs');
 var mongoose = require('mongoose');
 
-
+//set mongoose connection
  //mongoose.connect('mongodb://localhost/doctors');
-
 mongoose.connect('mongodb://dazzel:dazzel123456@ds255329.mlab.com:55329/doctorsdb');
-
 
 var db = mongoose.connection;
 
@@ -42,15 +40,12 @@ var doctorsSchema = mongoose.Schema({
 
 var Doctor = mongoose.model('Doctor', doctorsSchema);
 
-
-
 var userSchema = mongoose.Schema({
   username: {
 	type:String,
 	unique:true},
   password: String
 });
-
 
 // user password encryption
 userSchema.methods.encryptPassword=function(password){
@@ -63,18 +58,5 @@ userSchema.methods.validPassword=function(password){
 }
 var User = mongoose.model('User',userSchema);
 
-
-// to retrive all doctors
-var selectAll = function(callback) {
-  Doctor.find({}, function(err, doctor) {
-    if(err) {
-      callback(err, null);
-    } else {
-      callback(null, Doctor);
-    }
-  });
-};
-
-module.exports.selectAll = selectAll;
 module.exports.Doctor=Doctor;
 module.exports.User = User;
