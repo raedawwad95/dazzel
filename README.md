@@ -24,8 +24,8 @@ Make sure you installed the following technologies locally:
 - Run react client
    `$ npm run server-dev`
    
-# Running the tests
-npm run test
+# Running the test
+`npm run test`
 
 
 # File Hieghrarcy  
