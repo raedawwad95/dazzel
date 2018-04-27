@@ -1,17 +1,12 @@
 var bcrypt=require('bcrypt-nodejs');
 var mongoose = require('mongoose');
 
-<<<<<<< HEAD
 //set mongoose connection
  //mongoose.connect('mongodb://localhost/doctors');
 mongoose.connect('mongodb://dazzel:dazzel123456@ds255329.mlab.com:55329/doctorsdb');
 
-=======
 
-  //mongoose.connect('mongodb://localhost/doctors');
-  mongoose.connect('mongodb://dazzel:dazzel123456@ds255329.mlab.com:55329/doctorsdb');
->>>>>>>  heroku
-var db = mongoose.connection;
+  var db = mongoose.connection;
 
 db.on('error', function() {
   console.log('mongoose connection error');
