@@ -6,8 +6,6 @@ var agent = request.agent(app);
 const should = chai.should();
 const chaiHttp = require('chai-http');
 
-
-
 describe('Must check all routes', function() {
   it('should return 200 status code', function(done) {
     request(app)
