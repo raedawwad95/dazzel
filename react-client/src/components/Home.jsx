@@ -32,7 +32,7 @@ export default class Home extends Component{
 				<div className="devImg" >
 					<Carousel >
 					  <Carousel.Item className="img">
-					    <img   className="img"  src="../photos/medicos 1_1440x660.jpg" />
+					    <img   className="img"  src="../photos/240_F_115928369_E2yDqT2WqvoKl6XmsmL6Yitlb6j9Lh1Q.jpg" />
 					  </Carousel.Item>
 					  <Carousel.Item className="img" >
 					    <img  className="img" alt="900x500" src="../photos/md_experienceddoctors.jpg"/>
