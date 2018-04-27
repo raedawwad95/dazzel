@@ -39,7 +39,7 @@ export default class Specialties extends Component{
 									noCaret
 									id='dropdown-no-caret'>
 										<MenuItem eventKey='otolaryngologists(ear,nose,throat)'>otolaryngologists(ear,nose,throat)</MenuItem>
-										<MenuItem eventKey='cardiology (heart)'>cardiology(heart)</MenuItem>
+										<MenuItem eventKey='cardiology(heart)'>cardiology(heart)</MenuItem>
 										<MenuItem eventKey='neurologists(brain and nervus system)'>neurologists(brain and nervus system)</MenuItem>
 										<MenuItem eventKey='opthalmologist(eye)'>opthalmologist(eye)</MenuItem>
 										<MenuItem eventKey='Pulmonolgy (respiratory)'>Pulmonolgy (respiratory)</MenuItem>
