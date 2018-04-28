@@ -11,10 +11,9 @@ export default class Specialties extends Component{
 	constructor(props){
 		super(props)
 		this.state={
-			specialty:''
+			specialty:'',
 		}
 		this.onSelect=this.onSelect.bind(this)
-		
 	}
 
 	onSelect(e){
@@ -27,15 +26,14 @@ export default class Specialties extends Component{
 			
 		return (
 			<div>
-			
+
+
 				<div id="home" className=" container spbutton">
-			
-				
 					<div className='row'>
 						<div className='col-sm-4'>
 							<ButtonToolbar >
 
-								<DropdownButton className="btn btn-info  homebtn"  onSelect={this.onSelect}title ='choose specialty'
+								<DropdownButton className="btn btn-info  homebtn"  onSelect={this.onSelect} title ='choose specialty'
 									noCaret
 									id='dropdown-no-caret'>
 										<MenuItem eventKey='otolaryngologists(ear,nose,throat)'>otolaryngologists(ear,nose,throat)</MenuItem>
@@ -49,17 +47,21 @@ export default class Specialties extends Component{
 										<MenuItem eventKey='allergologist'>allergologist </MenuItem>
 										
 
-
 								</DropdownButton>
 							</ButtonToolbar>
+							<br/> <br/>
+
+							<div style={{fontSize:16}} > {this.state.specialty}</div>
+
 						</div>
+
 					<div className='col-sm-8'>
 						<Rate specialty={this.state.specialty}/>
 					</div>
-			
+
 					</div>
 				</div>
-			
+		
 			</div>
 		)
 	}
