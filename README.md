@@ -62,18 +62,18 @@ Make sure you installed the following technologies locally:
     
     
 ## Delopyment
-You can see a demo of the app in **Heroku**:
+You can see a demo of the app in **Heroku**: https://app-dazzel.herokuapp.com/
 
 
-## Future contributers
+## Contribution
 
 
 
 # Authors
-Tal Omari - Product Owner.
-Nada Ghanem - Scrum master.
-Raed Awwad - Team member.
-Samer Salmeh - Team member.
-Sara Koki - Team member.
+- Tal Omari - Product Owner.
+- Nada Ghanem - Scrum master.
+- Raed Awwad - Team member.
+- Samer Salmeh - Team member.
+- Sara Koki - Team member.
 
 
