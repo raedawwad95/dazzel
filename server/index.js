@@ -88,9 +88,11 @@ app.post('/admin/doctorform',function(req,res){
 	
 	else if(req.body.action==="Delete doctor"){
   // delete doctor by finding his name and delete it{ name } using deleteOne
-  		dataModels.Doctor.deleteOne({ 'name': req.body.name },  function (err, doctor) {
-		  if (err) {
-	      	return handleError(err)
+  		dataModels.Doctor.findOneAndRemove({ 'name': req.body.name },  function (err, doctor) {
+		  if (err || doctor===null) {
+	      	res.status(500);
+	      	res.send("error");
+
 	 	  }
 	 	  else {
 		    res.status(302);
