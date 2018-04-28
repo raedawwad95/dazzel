@@ -46,7 +46,6 @@ export default class Specialties extends Component{
 										<MenuItem eventKey='Pediatric(children)'>Pediatric(children) </MenuItem>
 										<MenuItem eventKey='allergologist'>allergologist </MenuItem>
 										
-
 								</DropdownButton>
 							</ButtonToolbar>
 							<br/> <br/>
