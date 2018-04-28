@@ -2,25 +2,21 @@ import React,{Component} from 'react';
 import { Navbar,Nav,NavItem,Carousel} from 'react-bootstrap';
  import Specialties from './Specialties.jsx'
 import { SocialIcon } from 'react-social-icons';
-
 /*
 * This is  an react-bootstrap component Design .
 */
-export default class Home extends Component{
-	
+export default class Home extends Component{	
 	render(){
 			
 		return (
 			<div>
 				<Navbar className='divNav'> 
-
 				<Navbar.Header>
     				<Navbar.Brand >
      					 <a  className='header'href="#home"><strong>Doctory</strong></a>
     				</Navbar.Brand>
-  				</Navbar.Header>
-						
-	 				<Nav pullRight className='nav' >
+  				</Navbar.Header>  					
+ 				    <Nav pullRight className='nav' >
 	    				<NavItem className='  nav' eventKey='home' href='#home'>
 	      					<p>Home</p>
 	    				</NavItem>
@@ -38,27 +34,21 @@ export default class Home extends Component{
 					    <img  className="img" alt="900x500" src="../photos/md_experienceddoctors.jpg"/>
 					  </Carousel.Item>
 					  <Carousel.Item className="img">
-					    <img className="img" alt="900x500" src="../photos/dr-toddler-ear-exam-500px.jpg" />
-					   
+					    <img className="img" alt="900x500" src="../photos/dr-toddler-ear-exam-500px.jpg" />					   
 					  </Carousel.Item>
 					</Carousel>
 				</div>
 					<div>
 				<Specialties/>
 				</div>
-	
 				<footer className="navbar-fixed-bottom footer">
 					<div className="container">
 						<div className="row">
-							 <h4> Contact Us :</h4>
-                    
+							 <h4> Contact Us :</h4>  
                     <SocialIcon url='http://twitter.com'  />
                     <SocialIcon url='http://facebook.com' />
                     <SocialIcon url='http://slack.com'/> 
                     <SocialIcon url='http://github.com'  />
-
-
-                
 						</div>
 					</div>
 				</footer>

@@ -7,19 +7,11 @@ import Map from './Map.jsx'
 class Rate extends React.Component{
 	constructor(props){
 		super(props)
-			
-		this.state={
-			specialties:[]
-        
+			this.state={
+			specialties:[]      
         }
-
-		this.showRate = this.showRate.bind(this);
-		
+		this.showRate = this.showRate.bind(this);		
 	}
-
-
-		
-
 /*
 * Ajax request fetch  the highet rate for  Doctors from  the data base  
 */		
@@ -37,19 +29,15 @@ class Rate extends React.Component{
 				},
 			error:function(err){
 				console.log(err)
-
 				}
 			})
 	    }
-	}
-
-				 
+	}				 
 /*
 * Render the highest Doctor rate and call Map file
 */	
 	render(){
 		return(
-
 		<div>
 			<div className="row">
 				<div className="col-sm-6">
@@ -72,9 +60,7 @@ class Rate extends React.Component{
 				    })}
 		        </div>
 				<div className="col-sm-6">
-
-				    <Map specialty={this.props.specialty}/> 
-				 
+				    <Map specialty={this.props.specialty}/> 				 
 				</div>
 			</div>
  		</div>
