@@ -19,11 +19,8 @@ app.use(express.static(__dirname + '/../react-client/dist'))
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
 
-// app.use(cookieParser);
-
 // use session middleware and configure it
 app.use(session({secret:'mysecretsession',resave:true,saveUninitialized: true,
-
    store:new mongoStore({mongooseConnection: mongoose.connection,collection: 'session',})
  }))
 
@@ -58,9 +55,9 @@ app.post('/admin/doctorform',function(req,res){
     lat:parseFloat(latlngStr.split(",")[0]),
     lng:parseFloat(latlngStr.split(",")[1])
   };
+
 // we have three option here 
 	if(req.body.action==="Add doctor"){
-  
   //create a variable doctor_data hold all new data
 		var doctor_data={
 		    name:req.body.name,
@@ -74,6 +71,7 @@ app.post('/admin/doctorform',function(req,res){
 		var newDoc=new dataModels.Doctor(doctor_data);
 
 	newDoc.save(function(err,doc){
+
   		if(err){
 		  	console.log("error in saving a new doctor");
 		    res.status(500);
@@ -83,47 +81,55 @@ app.post('/admin/doctorform',function(req,res){
 	    	res.status(302);
 	    	res.redirect('/admin/doctorform');
 	  	}
+
     })
    }
 	
 	else if(req.body.action==="Delete doctor"){
   // delete doctor by finding his name and delete it{ name } using deleteOne
-  		dataModels.Doctor.findOneAndRemove({ 'name': req.body.name },  function (err, doctor) {
+  		dataModels.Doctor.findOneAndRemove({ 'name': req.body.name },  
+      function (err, doctor) {
+
 		  if (err || doctor===null) {
 	      	res.status(500);
 	      	res.send("error");
-
 	 	  }
 	 	  else {
 		    res.status(302);
 		    res.render('doctorform');
 		  };
+
 		});
 	}
-	else{
+else{
   // modify doctor by finding his name and modify it{ name } using findone and modify data in result  
-  		dataModels.Doctor.findOne( { "name":req.body.name}, function(err, result){
-      		if (!err && result) {
-		        result.specialization = req.body.specialization; // update ur values goes here
-		        result.address = latlngObj;
-		        result.tel = req.body.tel;
-		        result.rate = req.body.rate;
-		        var newDoctor = new dataModels.Doctor(result);
-		        newDoctor.save(function(err, result2){
-		            if(!err) {
-		               res.render('doctorform')
-		            } else {
-		            	 res.status(500);
-			             res.send(err);
-		              }
-		        })  
-	       } 
-	       else {
-	       	res.status(500);
-	       	res.send(err);
-       	   }
-    	}); 
-	}
+	dataModels.Doctor.findOne( { "name":req.body.name}, 
+    function(err, result){
+
+  		if (!err && result) {
+        result.specialization = req.body.specialization; // update ur values goes here
+        result.address = latlngObj;
+        result.tel = req.body.tel;
+        result.rate = req.body.rate;
+        var newDoctor = new dataModels.Doctor(result);
+        newDoctor.save(function(err, result2){
+
+            if(!err) {
+               res.render('doctorform')
+            } else {
+            	 res.status(500);
+	             res.send(err);
+              }
+        })  
+     } 
+     else {
+     	res.status(500);
+     	res.send(err);
+   	   }
+
+	}); 
+}
+
 })
 
 app.post('/admin/signup',passport.authenticate('local.signup',{

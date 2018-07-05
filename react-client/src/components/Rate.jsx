@@ -5,67 +5,68 @@ import Map from './Map.jsx'
 * This is  an react component shows the  highest  Doctor rate  
 */
 class Rate extends React.Component{
-	constructor(props){
-		super(props)
-			this.state={
-			specialties:[]      
-        }
-		this.showRate = this.showRate.bind(this);		
-	}
+ constructor(props){
+	super(props);
+		this.state={
+		specialties:[]      
+    }
+	this.showRate = this.showRate.bind(this);		
+}
 /*
 * Ajax request fetch  the highet rate for  Doctors from  the data base  
 */		
-	showRate(){
-	 var that = this;
-		if(this.props.specialty){
-			$.ajax({
-			url:'/doctors/'+that.props.specialty,
-			type:'GET',
-			success:function(data){
-					
-				that.setState({
-					specialties:data
-					})
-				},
-			error:function(err){
-				console.log(err)
-				}
+showRate(){
+var that = this;
+
+if(this.props.specialty){
+	$.ajax({
+	url:'/doctors/'+that.props.specialty,
+	type:'GET',
+	success:function(data){		
+		that.setState({
+			specialties:data
 			})
-	    }
-	}				 
+		},
+	error:function(err){
+		console.log(err)
+		}
+	})
+}
+
+}				 
 /*
 * Render the highest Doctor rate and call Map file
 */	
-	render(){
-		return(
-		<div>
-			<div className="row">
-				<div className="col-sm-6">
-				 	<button  onClick ={this.showRate}type="button" className='btn btn-info btn-transparent  homebtn'>Rate</button>
-				    <br/>
-				    <br/>
-				    {this.state.specialties.map(function(spe,index){
-				    return(
-				      	<div className="container " key={index}>
-				      		 <div className="jumbotron docInfo">
-				      		    <div className="card-body">
-				      		       <img src='../../photos/five.png' alt="Card image" id='docImg'/>                              
-				      		       <h2 className="DocName">Dr.{spe.name}</h2>
-                                   <h3 className="cardText">Rate: {spe.rate}</h3>
-                                   <h3 className="cardText">Tel: {spe.tel}</h3>
-                                </div>
-				      		</div>
-			            </div>
-				    )
-				    })}
-		        </div>
-				<div className="col-sm-6">
-				    <Map specialty={this.props.specialty}/> 				 
-				</div>
-			</div>
- 		</div>
-				)
-	}
+render(){
+return(
+<div>
+<div className="row">
+ <div className="col-sm-6">
+ 	<button  onClick ={this.showRate}type="button" className='btn btn-info btn-transparent  homebtn'>Rate</button>
+    <br/>
+    <br/>
+    {this.state.specialties.map(function(spe,index){
+    return(
+      	<div className="container " key={index}>
+      		 <div className="jumbotron docInfo">
+      		    <div className="card-body">
+      		       <img src='../../photos/five.png' alt="Card image" id='docImg'/>                              
+      		       <h2 className="DocName">Dr.{spe.name}</h2>
+                   <h3 className="cardText">Rate: {spe.rate}</h3>
+                   <h3 className="cardText">Tel: {spe.tel}</h3>
+                </div>
+      		</div>
+        </div>
+    )
+    })}
+ </div>
+ <div className="col-sm-6">
+   <Map specialty={this.props.specialty}/> 				 
+ </div>
+</div>
+</div>
+)
+}
 } 
  
 
