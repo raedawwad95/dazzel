@@ -16,7 +16,6 @@ This app aims to guide patients to choose suitable doctors in Amman according to
 
 
 
-
 ### Technologies:
 - [ReactJS](https://reactjs.org) - Front-end Library
 - [Nodejs](https://nodejs.org/) - the server
