@@ -5,46 +5,18 @@
 This app aims to guide patients to choose suitable doctors in Amman according to their status. We added features to suggest either high rated(based on Jeeran website) or nearby doctors in emergency case.
 
 ## Table Of Contents :
-    dazzel+
-    ..../server
-    ........index.js (this includes server configuration and requests handling)
-    ..../config
-    ........passport.js (configuration for user authentication)
-    ..../test
-    ........serverSpec.js (simple test)
-    ..../views
-    ........admin.ejs   (view form admin page)
-    ........doctorform.ejs (view form for doctor entry)
-    ........login.ejs  (form for login)
-    ........signup.ejs (form for signup)
-    ..../database-mongo
-    ........index.js (database connection and schema defination)
-    ..../react-client
-    ......../dist (include static files)
-    ......../css 
-    ............custom.css
-    ........bundles.js
-    ........index.html
-    ......../src
-    ............index.jsx (the main react file -dome rendering)
-    ......../components
-    ............Home.jsx (Home compoenent)
-    ............Map.jsx (a component to show the google map)
-    ............Nearest.jsx (a component to disply the closest doctors)
-    ............Rate.jsx (a compnent to display the list of doctors based on rate)
-    ............Specialities.jsx (a component to list doctor spcialization)
-    ....package.json (includes all dependencies)
-    ....README.md
+1.[Technologies](#Technologies) 
+1.[Installation](#Installation)
+1.[Delopyment](#Delopyment)
+1.[Credits](#Credits)
 
-## Prerequisites:
-Make sure you installed the following technologies locally:
+### Technologies
+- [ReactJS](https://reactjs.org) - Front-end framework
+- [Nodejs](https://nodejs.org/) - the server
+- [MongoDB/mongoose](https://docs.mongodb.com/) - Database 
 
-    -React using webpack
-    - Nodejs
-    - Express
-    - Mongodb
 
-## Getting started & Installation:
+## Installation:
 
  - Get a copy of the repo 
 `   $ git clone https://github.com/Dazzel-18/dazzel.git`
