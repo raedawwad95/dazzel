@@ -5,13 +5,19 @@
 This app aims to guide patients to choose suitable doctors in Amman according to their status. We added features to suggest either high rated(based on Jeeran website) or nearby doctors in emergency case.
 
 ## Table Of Contents :
-1.[Technologies](#Technologies) 
+
+1.[Technologies](#Technologies)
+
 1.[Installation](#Installation)
+
 1.[Delopyment](#Delopyment)
+
 1.[Credits](#Credits)
 
-### Technologies
-- [ReactJS](https://reactjs.org) - Front-end framework
+
+
+### Technologies:
+- [ReactJS](https://reactjs.org) - Front-end Library
 - [Nodejs](https://nodejs.org/) - the server
 - [MongoDB/mongoose](https://docs.mongodb.com/) - Database 
 
