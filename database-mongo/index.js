@@ -33,8 +33,6 @@ var doctorsSchema = mongoose.Schema({
   tel: {type:Number,
     unique:true
   },
-  
-  //email:String,
   rate: Number
 });
 
@@ -42,8 +40,8 @@ var Doctor = mongoose.model('Doctor', doctorsSchema);
 
 var userSchema = mongoose.Schema({
   username: {
-	type:String,
-	unique:true},
+    type:String,
+    unique:true},
   password: String
 });
 
