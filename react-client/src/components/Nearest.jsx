@@ -7,14 +7,14 @@ import $ from 'jquery';
 const AnyReactComponent = ({ text }) => <div>{text}</div>;
 
 class Map extends React.Component {
- constructor(props){
+  constructor(props){
   super(props);
 
     this.state={
       specialties:[]
     }
 
- this.showNearest=this.showNearest.bind(this);
+  this.showNearest=this.showNearest.bind(this);
 }
 /*
 * Ajax request fetch the nearest three Doctors from  the data base  

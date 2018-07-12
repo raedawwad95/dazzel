@@ -6,15 +6,15 @@ import ReactDOM from 'react-dom'
 import Nearest from './Nearest.jsx'
 const Map = compose(
   withStateHandlers(() => ({
-      isMarkerShown: false,
-      markerPosition: null,        
-    }), {
-      onMapClick: ({ isMarkerShown }) => (e) => ({
-          markerPosition: e.latLng,
-          isMarkerShown:true,
-      })
-    }
-    ),
+    isMarkerShown: false,
+    markerPosition: null,        
+  }), {
+    onMapClick: ({ isMarkerShown }) => (e) => ({
+      markerPosition: e.latLng,
+      isMarkerShown:true,
+    })
+  }
+  ),
   withScriptjs,
   withGoogleMap
 )
